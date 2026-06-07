@@ -4,6 +4,8 @@ Official implementation of **Seeing Clearly, Reasoning Confidently: Plug-and-Pla
 
 This repository focuses on the CODA-LM experiments from our CVPR 2026 paper. The goal is to improve rare object recognition and object-centric reasoning in frozen vision-language models without finetuning the VLM backbone.
 
+**Project page:** https://xinhu98.github.io/seeing/
+
 ## Highlights
 
 - **Plug-and-play**: keeps the target VLM frozen and learns lightweight class-aware modules.
@@ -12,7 +14,7 @@ This repository focuses on the CODA-LM experiments from our CVPR 2026 paper. The
 - **CODA-LM first**: the main release path targets CODA-LM region perception; cross-domain GeoBench experiments are optional.
 
 <p align="center">
-  <img src="docs/assets/method_overview.png" width="85%" alt="Method overview">
+  <img src="docs/assets/framework_overview.png" width="92%" alt="CODA-LM framework overview">
 </p>
 
 ## Method

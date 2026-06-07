@@ -9,11 +9,11 @@
     :root {
       --ink: #17202a;
       --muted: #5b6572;
-      --paper: #f7f4ee;
+      --paper: #f6f8f9;
       --panel: #ffffff;
       --accent: #b44736;
       --accent-2: #1c6f7a;
-      --line: #ded8cf;
+      --line: #d8e0e5;
     }
 
     * {
@@ -39,7 +39,7 @@
       display: grid;
       align-items: end;
       overflow: hidden;
-      background: #101820 url("assets/qualitative_examples.png") center 38% / cover no-repeat;
+      background: #101820 url("assets/coda_scene_bus.jpg") center 45% / cover no-repeat;
     }
 
     .hero::before {
@@ -77,7 +77,7 @@
     h1 {
       max-width: 980px;
       margin: 18px 0 18px;
-      color: #fffaf2;
+      color: #fff;
       font-size: clamp(2.5rem, 7vw, 5.8rem);
       line-height: 0.98;
       letter-spacing: 0;
@@ -85,14 +85,14 @@
 
     .subtitle {
       max-width: 780px;
-      color: #f4ece1;
+      color: #f3f7f8;
       font-size: clamp(1.05rem, 2vw, 1.35rem);
       margin: 0 0 28px;
     }
 
     .authors {
       max-width: 900px;
-      color: #e7ded2;
+      color: #dfe8eb;
       font-size: 0.98rem;
       margin-bottom: 26px;
     }
@@ -109,12 +109,12 @@
       justify-content: center;
       min-height: 42px;
       padding: 10px 16px;
-      border: 1px solid rgba(255, 250, 242, 0.46);
+      border: 1px solid rgba(255, 255, 255, 0.46);
       border-radius: 6px;
-      color: #fffaf2;
+      color: #fff;
       text-decoration: none;
       font-weight: 700;
-      background: rgba(255, 250, 242, 0.08);
+      background: rgba(255, 255, 255, 0.08);
     }
 
     .button.primary {
@@ -172,7 +172,18 @@
       color: var(--muted);
       font-size: 0.94rem;
       border-top: 1px solid var(--line);
-      background: #fffaf5;
+      background: #f9fbfc;
+    }
+
+    .figure-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+      margin-top: 24px;
+    }
+
+    .figure-grid .figure {
+      margin: 0;
     }
 
     .metric-grid {
@@ -220,7 +231,7 @@
     }
 
     th {
-      background: #efe7dc;
+      background: #e8eef1;
       font-size: 0.92rem;
       text-transform: uppercase;
     }
@@ -252,7 +263,8 @@
       }
 
       .two-col,
-      .metric-grid {
+      .metric-grid,
+      .figure-grid {
         grid-template-columns: 1fr;
       }
 
@@ -307,9 +319,20 @@
       </div>
     </section>
 
+    <section>
+      <h2>One class memory, two plug-and-play remedies.</h2>
+      <p class="lead">
+        The framework learns multi-modal class embeddings from region-level visual evidence and synonym-augmented text. The same class memory drives visual token enhancement and object-aware prompt enrichment at inference time.
+      </p>
+      <div class="figure">
+        <img src="assets/framework_overview.png" alt="Overview of the model framework">
+        <div class="caption">Overview of the CODA-LM framework: multi-modal class embeddings support both visual token refinement and enriched text prompts.</div>
+      </div>
+    </section>
+
     <section class="two-col">
       <div>
-        <h2>Class-aware visual and textual remedies.</h2>
+        <h2>Class-aware visual and textual anchors.</h2>
         <p class="lead">
           We learn multi-modal class embeddings from object-region visual features and synonym-augmented text descriptions. These embeddings become compact anchors for rare object categories.
         </p>
@@ -337,8 +360,8 @@
         </table>
       </div>
       <div class="figure">
-        <img src="assets/method_overview.png" alt="Overview of the method">
-        <div class="caption">The method improves object-centric perception before the frozen language decoder reasons over the scene.</div>
+        <img src="assets/class_embedding_space.png" alt="Visualization of learned class embeddings">
+        <div class="caption">Learned class embeddings align visual clusters with text-side semantic anchors for rare object categories.</div>
       </div>
     </section>
 
@@ -358,9 +381,15 @@
       <p class="lead">
         The public release centers on CODA-LM region perception because it directly matches the paper's rare object reasoning motivation and provides enough training and test coverage for reproducible experiments.
       </p>
-      <div class="figure">
-        <img src="assets/coda_results.png" alt="CODA-LM result comparison">
-        <div class="caption">CODA-LM comparison across categories. GeoBench is retained as an optional cross-domain experiment.</div>
+      <div class="figure-grid">
+        <div class="figure">
+          <img src="assets/method_overview.png" alt="CODA-LM long-tail motivation and improvement overview">
+          <div class="caption">Long-tail categories benefit most from class-aware visual enhancement.</div>
+        </div>
+        <div class="figure">
+          <img src="assets/coda_results.png" alt="CODA-LM result comparison">
+          <div class="caption">CODA-LM comparison across categories. GeoBench is retained as an optional cross-domain experiment.</div>
+        </div>
       </div>
     </section>
 
