@@ -18,5 +18,6 @@ authors:
 conference:
   name: IEEE/CVF Conference on Computer Vision and Pattern Recognition
   year: 2026
+proceedings-title: "Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition"
+pages: "18806--18815"
 repository-code: "https://github.com/XinHu98/seeing"
-

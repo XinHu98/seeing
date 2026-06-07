@@ -105,7 +105,7 @@ GeoBench is used as an optional cross-domain evaluation to show that the idea is
   title={Seeing Clearly, Reasoning Confidently: Plug-and-Play Remedies for Vision Language Model Blindness},
   author={Hu, Xin and Ni, Haomiao and Zhang, Yunbei and Hamm, Jihun and Li, Zechen and Ding, Zhengming},
   booktitle={Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition},
+  pages={18806--18815},
   year={2026}
 }
 ```
-
