@@ -19,7 +19,7 @@ This repository focuses on the CODA-LM experiments from our CVPR 2026 paper. The
 - **CODA-LM first**: the main release path targets CODA-LM region perception; cross-domain GeoBench experiments are optional.
 
 <p align="center">
-  <img src="docs/assets/framework_overview.png" width="92%" alt="CODA-LM framework overview">
+  <img src="docs/assets/paper_teaser_fig1.png" width="92%" alt="Paper teaser figure">
 </p>
 
 ## Method

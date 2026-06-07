@@ -27,6 +27,7 @@
       font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       line-height: 1.58;
       letter-spacing: 0;
+      overflow-x: hidden;
     }
 
     a {
@@ -35,25 +36,25 @@
 
     .hero {
       position: relative;
-      min-height: 82vh;
+      min-height: auto;
       display: grid;
       align-items: end;
       overflow: hidden;
-      background: #101820 url("assets/coda_scene_bus.jpg") center 45% / cover no-repeat;
+      background: #101820;
     }
 
     .hero::before {
       content: "";
       position: absolute;
       inset: 0;
-      background: rgba(10, 16, 22, 0.68);
+      background: none;
     }
 
     .hero-inner {
       position: relative;
       width: min(1120px, calc(100% - 40px));
       margin: 0 auto;
-      padding: 72px 0 56px;
+      padding: 64px 0 48px;
     }
 
     .venue {
@@ -78,7 +79,7 @@
       max-width: 980px;
       margin: 18px 0 18px;
       color: #fff;
-      font-size: clamp(2.5rem, 7vw, 5.8rem);
+      font-size: clamp(2.4rem, 6vw, 4.8rem);
       line-height: 0.98;
       letter-spacing: 0;
     }
@@ -132,6 +133,10 @@
       padding: 58px 0;
     }
 
+    section.wide {
+      width: min(1240px, calc(100% - 40px));
+    }
+
     h2 {
       font-size: clamp(1.8rem, 3vw, 2.7rem);
       line-height: 1.12;
@@ -165,6 +170,10 @@
       display: block;
       width: 100%;
       height: auto;
+    }
+
+    .paper-figure {
+      background: #fff;
     }
 
     .caption {
@@ -223,6 +232,15 @@
       display: table;
     }
 
+    pre {
+      max-width: 100%;
+      overflow-x: auto;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 16px;
+    }
+
     th, td {
       padding: 12px 14px;
       text-align: left;
@@ -258,8 +276,22 @@
 
     @media (max-width: 820px) {
       .hero {
-        min-height: 78vh;
-        background-position: center top;
+        min-height: auto;
+      }
+
+      .hero-inner {
+        padding: 48px 0 40px;
+      }
+
+      .actions {
+        display: grid;
+        grid-template-columns: 1fr;
+      }
+
+      .button {
+        width: 100%;
+        min-width: 0;
+        padding: 10px 12px;
       }
 
       .two-col,
@@ -277,6 +309,7 @@
         overflow-x: auto;
       }
     }
+
   </style>
 </head>
 <body>
@@ -301,11 +334,15 @@
   </header>
 
   <main>
-    <section>
+    <section class="wide">
       <h2>VLMs can reason fluently about the wrong object.</h2>
       <p class="lead">
         Rare objects in driving scenes are often visible to humans but under-attended by general VLMs. Our method learns class-aware multi-modal embeddings and uses them to refine visual tokens and provide object hints, while keeping the VLM backbone frozen.
       </p>
+      <div class="figure paper-figure">
+        <img src="assets/paper_teaser_fig1.png" alt="Paper teaser comparing LLaVA and our method on rare object recognition">
+        <div class="caption">Paper Figure 1: the baseline identifies a bollard as a traffic light, while our plug-and-play refinement recovers the correct object and reasoning.</div>
+      </div>
       <div class="metric-grid">
         <div class="metric">
           <strong>10,727</strong>
@@ -322,88 +359,57 @@
       </div>
     </section>
 
-    <section>
+    <section class="wide">
       <h2>One class memory, two plug-and-play remedies.</h2>
       <p class="lead">
         The framework learns multi-modal class embeddings from region-level visual evidence and synonym-augmented text. The same class memory drives visual token enhancement and object-aware prompt enrichment at inference time.
       </p>
-      <div class="figure">
-        <img src="assets/framework_overview.png" alt="Overview of the model framework">
-        <div class="caption">Overview of the CODA-LM framework: multi-modal class embeddings support both visual token refinement and enriched text prompts.</div>
+      <div class="figure paper-figure">
+        <img src="assets/paper_framework_fig3.png" alt="Paper Figure 3 overview of the model framework">
+        <div class="caption">Paper Figure 3: multi-modal class embeddings support visual token refinement and object-aware prompt enrichment while the VLM remains frozen.</div>
       </div>
     </section>
 
-    <section class="two-col">
-      <div>
-        <h2>Class-aware visual and textual anchors.</h2>
-        <p class="lead">
-          We learn multi-modal class embeddings from object-region visual features and synonym-augmented text descriptions. These embeddings become compact anchors for rare object categories.
-        </p>
-        <table>
-          <thead>
-            <tr>
-              <th>Component</th>
-              <th>Purpose</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Class embeddings</td>
-              <td>Fuse visual details from VFMs with text-side semantic variation.</td>
-            </tr>
-            <tr>
-              <td>Visual refinement</td>
-              <td>Use cross-attention to inject class-discriminative cues into VLM visual tokens.</td>
-            </tr>
-            <tr>
-              <td>Object hints</td>
-              <td>Detect likely rare objects and enrich the prompt with top-k candidates.</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      <div class="figure">
-        <img src="assets/class_embedding_space.png" alt="Visualization of learned class embeddings">
-        <div class="caption">Learned class embeddings align visual clusters with text-side semantic anchors for rare object categories.</div>
-      </div>
-    </section>
-
-    <section>
-      <h2>Lightweight visual token refinement.</h2>
+    <section class="wide">
+      <h2>Multi-modal class embeddings separate rare categories.</h2>
       <p class="lead">
-        The adapter maps VLM visual tokens into a class-embedding space, attends to learned prototypes, and decodes refined visual tokens back into the language model space. It is trained with reconstruction and autoregressive objectives.
+        The learned class memory aligns visual evidence with synonym-augmented text anchors, making rare object categories more separable than raw VFM features alone.
       </p>
-      <div class="figure">
-        <img src="assets/adapter_architecture.png" alt="Visual token adapter architecture">
-        <div class="caption">Cross-attentive adapter for class-guided visual token enhancement.</div>
+      <div class="figure paper-figure">
+        <img src="assets/paper_embedding_fig4.png" alt="Paper Figure 4 t-SNE visualization of class embeddings">
+        <div class="caption">Paper Figure 4: compared with DINOv3 features, our multi-modal class embeddings form cleaner class-level structure.</div>
       </div>
     </section>
 
-    <section>
+    <section class="wide">
       <h2>CODA-LM is the main reproduction path.</h2>
       <p class="lead">
         The public release centers on CODA-LM region perception because it directly matches the paper's rare object reasoning motivation and provides enough training and test coverage for reproducible experiments.
       </p>
-      <div class="figure-grid">
-        <div class="figure">
-          <img src="assets/method_overview.png" alt="CODA-LM long-tail motivation and improvement overview">
-          <div class="caption">Long-tail categories benefit most from class-aware visual enhancement.</div>
-        </div>
-        <div class="figure">
-          <img src="assets/coda_results.png" alt="CODA-LM result comparison">
-          <div class="caption">CODA-LM comparison across categories. GeoBench is retained as an optional cross-domain experiment.</div>
-        </div>
+      <div class="figure paper-figure">
+        <img src="assets/paper_coda_table1.png" alt="Paper Table 1 CODA-LM GPT score comparison">
+        <div class="caption">Paper Table 1: CODA-LM comparison across object categories. GeoBench is retained as an optional cross-domain evaluation.</div>
+      </div>
+      <div class="figure paper-figure">
+        <img src="assets/paper_ablation_fig5.png" alt="Paper Figure 5 ablation study">
+        <div class="caption">Paper Figure 5: visual refinement and targeted text hints are complementary on CODA-LM.</div>
       </div>
     </section>
 
-    <section>
-      <h2>Qualitative behavior.</h2>
+    <section class="wide">
+      <h2>Interpretable behavior.</h2>
       <p class="lead">
-        The model becomes more likely to name the marked rare object correctly and produce driving-relevant explanations after visual refinement and object-hint injection.
+        The refined visual tokens provide stronger object evidence, and the object-aware prompt steers the decoder toward the correct rare-object label.
       </p>
-      <div class="figure">
-        <img src="assets/qualitative_examples.png" alt="Qualitative examples">
-        <div class="caption">Example rare-object cases from CODA-LM.</div>
+      <div class="figure-grid">
+        <div class="figure paper-figure">
+          <img src="assets/paper_logit_lens_fig7.png" alt="Paper Figure 7 logit lens interpretation">
+          <div class="caption">Paper Figure 7: hidden-state interpretation shifts from the wrong class toward the correct object evidence.</div>
+        </div>
+        <div class="figure paper-figure">
+          <img src="assets/paper_attention_fig6.png" alt="Paper Figure 6 attention weights comparison">
+          <div class="caption">Paper Figure 6: attention becomes more spatially concentrated on the target object after refinement.</div>
+        </div>
       </div>
     </section>
 
