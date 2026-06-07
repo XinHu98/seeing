@@ -4,7 +4,12 @@ Official implementation of **Seeing Clearly, Reasoning Confidently: Plug-and-Pla
 
 This repository focuses on the CODA-LM experiments from our CVPR 2026 paper. The goal is to improve rare object recognition and object-centric reasoning in frozen vision-language models without finetuning the VLM backbone.
 
-**Project page:** https://xinhu98.github.io/seeing/
+<p align="center">
+  <a href="https://xinhu98.github.io/seeing/"><img src="https://img.shields.io/badge/Project-Page-1c6f7a" alt="Project page"></a>
+  <a href="https://arxiv.org/abs/2602.19615"><img src="https://img.shields.io/badge/arXiv-2602.19615-b31b1b" alt="arXiv"></a>
+  <a href="https://openaccess.thecvf.com/content/CVPR2026/html/Hu_Seeing_Clearly_Reasoning_Confidently_Plug-and-Play_Remedies_for_Vision_Language_Model_CVPR_2026_paper.html"><img src="https://img.shields.io/badge/CVPR-2026-b44736" alt="CVPR 2026"></a>
+  <a href="https://github.com/XinHu98/seeing"><img src="https://img.shields.io/badge/Code-GitHub-24292f" alt="Code"></a>
+</p>
 
 ## Highlights
 
