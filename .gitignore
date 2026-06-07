@@ -1,0 +1,66 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Environments
+.env
+.venv/
+venv/
+env/
+*.conda
+
+# System / editor
+.DS_Store
+.vscode/
+.idea/
+
+# Datasets and large artifacts
+CODA-data/
+CODA-LM/
+GEOBench*/
+D3*/
+data/
+data.zip
+*.zip
+*.tar
+*.tar.gz
+*.tgz
+
+# Checkpoints and model weights
+checkpoints/
+pretrained_models/
+pretrained_models_new/
+autoencoder*_checkpoints/
+*.pth
+*.pt
+*.bin
+*.safetensors
+
+# Feature stores and generated ROI assets
+saved_rois*/
+object_images/
+bg_rois/
+clip_text_feats*/
+class_token/
+*.npy
+*.npz
+
+# Logs, predictions, and evaluation outputs
+*.log
+*_predictions.jsonl
+*_prediction.jsonl
+*_summary.json
+eval/
+outputs/
+results/
+results_*/
+*_gpt_scores/
+
+# Temporary figures generated during experiments
+grey.png
+cropped.png
+

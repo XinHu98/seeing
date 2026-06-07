@@ -1,0 +1,35 @@
+# CODA-LM main configuration for LLaVA-1.5-7B.
+
+model:
+  name: liuhaotian/llava-v1.5-7b
+  conv_mode: vicuna_v1
+  freeze_vlm: true
+
+data:
+  root: /path/to/CODA-root
+  train_annotation: CODA-LM/Train/vqa_anno/region_perception.jsonl
+  test_annotation: CODA-LM/Test/vqa_anno/region_perception.jsonl
+  image_root: /path/to/CODA-root
+
+class_embeddings:
+  num_classes: 29
+  dim: 1024
+  ema_momentum: 0.95
+  text_features_dir: clip_text_feats_best
+  visual_features_dir: saved_rois_dino_train
+
+adapter:
+  visual_dim: 4096
+  latent_dim: 1024
+  num_heads: 8
+  epochs: 10
+  batch_size: 4
+  lr: 0.0001
+  reconstruction_weight: 1.0
+  autoregressive_weight: 1.0
+
+inference:
+  use_visual_refinement: true
+  use_text_hints: true
+  top_k_hints: 3
+

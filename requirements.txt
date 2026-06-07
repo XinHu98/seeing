@@ -1,0 +1,7 @@
+pillow
+tqdm
+pyyaml
+numpy
+torch
+transformers
+

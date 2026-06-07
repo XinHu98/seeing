@@ -1,0 +1,22 @@
+cff-version: 1.2.0
+title: "Seeing Clearly, Reasoning Confidently: Plug-and-Play Remedies for Vision Language Model Blindness"
+message: "If you use this code, please cite our CVPR 2026 paper."
+type: conference-paper
+authors:
+  - family-names: Hu
+    given-names: Xin
+  - family-names: Ni
+    given-names: Haomiao
+  - family-names: Zhang
+    given-names: Yunbei
+  - family-names: Hamm
+    given-names: Jihun
+  - family-names: Li
+    given-names: Zechen
+  - family-names: Ding
+    given-names: Zhengming
+conference:
+  name: IEEE/CVF Conference on Computer Vision and Pattern Recognition
+  year: 2026
+repository-code: "https://github.com/XinHu98/seeing"
+
