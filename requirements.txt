@@ -3,5 +3,7 @@ tqdm
 pyyaml
 numpy
 torch
+torchvision
 transformers
-
+accelerate
+sentencepiece

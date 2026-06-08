@@ -1,17 +1,13 @@
 # Source Code
 
-The cleaned implementation will be organized here.
-
-Planned modules:
-
 ```text
 src/seeing/
 ├── class_embeddings/
-├── visual_refinement/
-├── prompt_hints/
+├── cli/
 ├── data/
-└── evaluation/
+├── evaluation/
+├── inference/
+└── models/
 ```
 
-The research workspace contains several exploratory scripts. This release repository will include the cleaned CODA-LM path first, with optional GeoBench experiments added later.
-
+The first public implementation supports CODA-LM with LLaVA-1.5-7B. Additional VLM backbones and GeoBench scripts will be added after the main reproduction path is stable.
