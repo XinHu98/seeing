@@ -2,7 +2,7 @@
 
 Official implementation of **Seeing Clearly, Reasoning Confidently: Plug-and-Play Remedies for Vision Language Model Blindness**.
 
-This repository focuses on the CODA-LM experiments from our CVPR 2026 paper. The goal is to improve rare object recognition and object-centric reasoning in frozen vision-language models without finetuning the VLM backbone.
+This repository is to improve rare object recognition and object-centric reasoning in frozen vision-language models without finetuning the VLM backbone.
 
 <p align="center">
   <a href="https://xinhu98.github.io/seeing/"><img src="https://img.shields.io/badge/Project-Page-1c6f7a" alt="Project page"></a>
