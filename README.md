@@ -16,7 +16,6 @@ This repository is to improve rare object recognition and object-centric reasoni
 - **Plug-and-play**: keeps the target VLM frozen and learns lightweight class-aware modules.
 - **Rare object focused**: improves reasoning over long-tail driving objects such as bollards, debris, strollers, and traffic islands.
 - **Dual enhancement**: refines visual tokens and injects object-aware text hints.
-- **CODA-LM first**: the main release path targets CODA-LM region perception; cross-domain GeoBench experiments are optional.
 
 <p align="center">
   <img src="docs/assets/paper_teaser_fig1.png" width="92%" alt="Paper teaser figure">
