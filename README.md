@@ -69,7 +69,7 @@ The current code includes CODA-LM data preparation, DINO ROI feature extraction,
 
 ## Quick Start
 
-Follow [INSTALL.md](INSTALL.md) to create the environment and install LLaVA/LLaVA-NeXT. The CODA-LM LLaVA scripts expect the external `llava` package to be importable.
+Follow [INSTALL.md](INSTALL.md) to create the environment and install the original LLaVA repository for LLaVA-1.5. The CODA-LM LLaVA scripts expect the external `llava` package to be importable.
 
 After installation, set the dataset paths. `CODA_DATA_ROOT` is the directory that contains `val/`, `test/`, and `CODA-LM/`.
 

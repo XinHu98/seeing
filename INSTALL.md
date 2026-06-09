@@ -1,6 +1,6 @@
 # Installation
 
-This release is tested for the CODA-LM + LLaVA-1.5-7B path.
+This release is for the CODA-LM + original LLaVA-1.5-7B path.
 
 ## 1. Create Environment
 
@@ -24,20 +24,20 @@ git clone https://github.com/XinHu98/seeing.git
 cd seeing
 ```
 
-## 3. Install LLaVA
+## 3. Install Original LLaVA
 
-The CODA-LM LLaVA scripts import the external `llava` package. Install LLaVA or LLaVA-NeXT in editable mode:
+The CODA-LM LLaVA scripts import the external `llava` package from the original LLaVA codebase. Install the original LLaVA repository in editable mode:
 
 ```bash
 mkdir -p external
-git clone https://github.com/LLaVA-VL/LLaVA-NeXT.git external/LLaVA-NeXT
-pip install -e external/LLaVA-NeXT --no-deps
+git clone https://github.com/haotian-liu/LLaVA.git external/LLaVA
+pip install -e external/LLaVA --no-deps
 ```
 
-If you already have a working LLaVA checkout, use it instead:
+If you already have a working original LLaVA checkout, use it instead:
 
 ```bash
-export PYTHONPATH=/path/to/LLaVA-or-LLaVA-NeXT:${PYTHONPATH}
+export PYTHONPATH=/path/to/LLaVA:${PYTHONPATH}
 ```
 
 ## 4. Install Seeing Dependencies
