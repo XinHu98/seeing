@@ -101,17 +101,6 @@ The public metric summary includes a lightweight label-mention proxy for smoke t
 
 See [DATA.md](DATA.md) for dataset layout and [MODEL_ZOO.md](MODEL_ZOO.md) for checkpoint plans.
 
-## Project Page
-
-The project page lives in [docs/index.html](docs/index.html). Enable GitHub Pages with:
-
-```text
-Settings -> Pages -> Deploy from a branch -> main / docs
-```
-
-## Additional Experiments
-
-GeoBench is used as an optional cross-domain evaluation to show that the idea is not limited to ground-level autonomous driving imagery. It is not the main reproduction path of this repository.
 
 ## Citation
 
