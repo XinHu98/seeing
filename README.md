@@ -53,7 +53,9 @@ This release currently focuses on the CODA-LM + LLaVA-1.5-7B path, the simplest 
 .
 ├── README.md
 ├── DATA.md
+├── INSTALL.md
 ├── MODEL_ZOO.md
+├── RUN_CODA_LLAVA.md
 ├── configs/
 ├── docs/
 │   ├── index.html
@@ -67,38 +69,47 @@ The current code includes CODA-LM data preparation, DINO ROI feature extraction,
 
 ## Quick Start
 
-Install the Python dependencies and make the official LLaVA package available on `PYTHONPATH` or in your environment.
+Follow [INSTALL.md](INSTALL.md) to create the environment and install LLaVA/LLaVA-NeXT. The CODA-LM LLaVA scripts expect the external `llava` package to be importable.
+
+After installation, set the dataset paths. `CODA_DATA_ROOT` is the directory that contains `val/`, `test/`, and `CODA-LM/`.
 
 ```bash
-pip install -r requirements.txt
+export CODA_DATA_ROOT=/path/to/CODA-data
+export CODA_LM_ROOT=${CODA_DATA_ROOT}/CODA-LM
+export IMAGE_ROOT=${CODA_DATA_ROOT}
 ```
 
-Then run the CODA-LM LLaVA-1.5-7B path. Set `CODA_ROOT` to the directory that contains `Train/` and `Test/`.
+Prepare CODA-LM region-perception files:
 
 ```bash
-export CODA_ROOT=/path/to/CODA-data/CODA-LM
+bash scripts/prepare_coda.sh "${CODA_DATA_ROOT}"
+```
 
-# 1. Prepare CODA-LM region-perception VQA files
-bash scripts/prepare_coda.sh "${CODA_ROOT}"
+Run a small baseline smoke test first:
 
-# 2. Extract DINO ROI features for class embedding learning
+```bash
+MODE=baseline NUM_SAMPLES=20 bash scripts/eval_coda.sh configs/coda_llava_7b.yaml
+```
+
+Then train and evaluate the CODA-LM remedy:
+
+```bash
 bash scripts/extract_coda_region_features.sh
-
-# 3. Train or load multi-modal class embeddings
 bash scripts/train_class_embeddings_coda.sh configs/coda_llava_7b.yaml
-
-# 4. Train the visual refinement adapter with frozen LLaVA-1.5-7B
 bash scripts/train_adapter_coda.sh configs/coda_llava_7b.yaml
 
-# 5. Evaluate with visual refinement and object hints
-MODE=full bash scripts/eval_coda.sh configs/coda_llava_7b.yaml
+MODE=refine bash scripts/eval_coda.sh configs/coda_llava_7b.yaml
 ```
 
-For a quick baseline-only run, use `MODE=baseline NUM_SAMPLES=20 bash scripts/eval_coda.sh`.
+If object-prior text files are available, run the full mode:
+
+```bash
+DETECTION_DIR=saved_sample_objects MODE=full bash scripts/eval_coda.sh configs/coda_llava_7b.yaml
+```
 
 The public metric summary includes a lightweight label-mention proxy for smoke tests. The paper's GPT-score evaluation protocol will be documented with the checkpoint release and should be run with your own API credentials.
 
-See [DATA.md](DATA.md) for dataset layout and [MODEL_ZOO.md](MODEL_ZOO.md) for checkpoint plans.
+See [RUN_CODA_LLAVA.md](RUN_CODA_LLAVA.md) for the full command-by-command walkthrough, [DATA.md](DATA.md) for dataset layout, and [MODEL_ZOO.md](MODEL_ZOO.md) for checkpoint plans.
 
 
 ## Citation

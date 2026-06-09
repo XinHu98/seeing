@@ -32,6 +32,16 @@ CODA-root/
     └── Test/vqa_anno/region_perception.jsonl
 ```
 
+The scripts use the following path convention:
+
+```bash
+export CODA_DATA_ROOT=/path/to/CODA-data
+export CODA_LM_ROOT=${CODA_DATA_ROOT}/CODA-LM
+export IMAGE_ROOT=${CODA_DATA_ROOT}
+```
+
+`CODA_DATA_ROOT` contains the image folders (`val/`, `test/`) and the `CODA-LM/` annotation folder. `CODA_LM_ROOT` contains the CODA-LM splits (`Train/`, `Val/`, `Test/`, `Mini/`).
+
 Each converted sample has:
 
 ```json
@@ -59,4 +69,3 @@ Do not commit raw datasets, generated images, DINO features, checkpoints, predic
 ## Optional GeoBench
 
 GeoBench is a secondary cross-domain experiment. It is useful for showing transfer beyond ground-level driving scenes, but CODA-LM is the primary benchmark and reproduction path.
-

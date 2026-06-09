@@ -3,14 +3,15 @@ set -euo pipefail
 
 CONFIG="${1:-configs/coda_llava_7b.yaml}"
 
-CODA_ROOT="${CODA_ROOT:-/path/to/CODA-data/CODA-LM}"
-TEST_ANN="${TEST_ANN:-${CODA_ROOT}/Test/vqa_anno/region_perception.jsonl}"
-IMAGE_ROOT="${IMAGE_ROOT:-${CODA_ROOT}}"
+CODA_DATA_ROOT="${CODA_DATA_ROOT:-/path/to/CODA-data}"
+CODA_LM_ROOT="${CODA_LM_ROOT:-${CODA_ROOT:-${CODA_DATA_ROOT}/CODA-LM}}"
+TEST_ANN="${TEST_ANN:-${CODA_LM_ROOT}/Test/vqa_anno/region_perception.jsonl}"
+IMAGE_ROOT="${IMAGE_ROOT:-${CODA_DATA_ROOT}}"
 MODE="${MODE:-full}"
 OUTPUT_DIR="${OUTPUT_DIR:-outputs/eval_llava15}"
 
 CMD=(
-  env PYTHONPATH=src python -m seeing.cli.eval_llava15_coda
+  env PYTHONPATH="src:${PYTHONPATH:-}" python -m seeing.cli.eval_llava15_coda
   --annotation "${TEST_ANN}"
   --image-root "${IMAGE_ROOT}"
   --output-dir "${OUTPUT_DIR}"

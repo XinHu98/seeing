@@ -7,10 +7,11 @@ model:
   freeze_vlm: true
 
 data:
+  coda_data_root: /path/to/CODA-data
   root: /path/to/CODA-data/CODA-LM
   train_annotation: Train/vqa_anno/region_perception.jsonl
   test_annotation: Test/vqa_anno/region_perception.jsonl
-  image_root: /path/to/CODA-data/CODA-LM
+  image_root: /path/to/CODA-data
 
 class_embeddings:
   num_classes: 29
